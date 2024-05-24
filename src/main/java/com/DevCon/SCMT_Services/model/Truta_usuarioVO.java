@@ -1,6 +1,6 @@
 package com.DevCon.SCMT_Services.model;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "truta_usuario")

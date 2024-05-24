@@ -11,19 +11,19 @@ public class TusuarioBuilder {
         if (tusuarioVO.getTusuario_admin() != null && tusuarioVO.getTusuario_admin().getId() != null) {
             tusuarioDTO.setTusuario_admin_id(tusuarioVO.getTusuario_admin().getId());
         } else {
-            tusuarioDTO.setTusuario_admin_id(0);
+
         }
 
         if (tusuarioVO.getTusuario_conductor() != null && tusuarioVO.getTusuario_conductor().getId() != null) {
             tusuarioDTO.setTusuario_conductor_id(tusuarioVO.getTusuario_conductor().getId());
         } else {
-            tusuarioDTO.setTusuario_conductor_id(0);
+
         }
 
         if (tusuarioVO.getTusuario_pasajero() != null && tusuarioVO.getTusuario_pasajero().getId() != null) {
             tusuarioDTO.setTusuario_pasajero_id(tusuarioVO.getTusuario_pasajero().getId());
         } else {
-            tusuarioDTO.setTusuario_pasajero_id(0);
+
         }
 
         tusuarioDTO.setNombre(tusuarioVO.getNombre());

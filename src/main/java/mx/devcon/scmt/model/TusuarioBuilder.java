@@ -15,7 +15,7 @@ public class TusuarioBuilder {
         tusuarioDTO.setPrimer_apellido(tusuarioVO.getPrimer_apellido());
         tusuarioDTO.setSegundo_apellido(tusuarioVO.getSegundo_apellido());
         tusuarioDTO.setUsuario(tusuarioVO.getUsuario());
-        tusuarioDTO.setContrasenia(tusuarioVO.getContrasenia());
+        tusuarioDTO.setContraseña(tusuarioVO.getContraseña());
         tusuarioDTO.setEstado(tusuarioVO.getEstado());
 
         return tusuarioDTO;
@@ -35,7 +35,7 @@ public class TusuarioBuilder {
         tusuarioVO.setPrimer_apellido(tusuarioDTO.getPrimer_apellido());
         tusuarioVO.setSegundo_apellido(tusuarioDTO.getSegundo_apellido());
         tusuarioVO.setUsuario(tusuarioDTO.getUsuario());
-        tusuarioVO.setContrasenia(tusuarioDTO.getContrasenia());
+        tusuarioVO.setContraseña(tusuarioDTO.getContraseña());
         tusuarioVO.setEstado(tusuarioDTO.getEstado());
 
         return tusuarioVO;

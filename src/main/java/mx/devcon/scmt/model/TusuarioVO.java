@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tusuario")
+@NamedQueries({
+    @NamedQuery(name = "TusuarioVO.consultarAll", query = "select c from TusuarioVO c where c.Tcompania.id = :tcompania_id and estado = 1"),
+})
 public class TusuarioVO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,7 +31,7 @@ public class TusuarioVO {
     private String primer_apellido;
     private String segundo_apellido;
     private String usuario;
-    private String contrasenia;
+    private String contraseña;
     private int estado;
 
     public int getId() {
@@ -111,12 +114,12 @@ public class TusuarioVO {
         this.usuario = usuario;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public int getEstado() {

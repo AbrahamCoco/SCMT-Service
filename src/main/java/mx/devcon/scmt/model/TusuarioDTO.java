@@ -11,7 +11,7 @@ public class TusuarioDTO {
     private String primer_apellido;
     private String segundo_apellido;
     private String usuario;
-    private String contrasenia;
+    private String contraseña;
     private int estado;
 
     public TusuarioDTO() {
@@ -98,12 +98,12 @@ public class TusuarioDTO {
         this.usuario = usuario;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getContraseña() {
+        return contraseña;
     }
 
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
+    public void setContraseña(String contraseña) {
+        this.contraseña = contraseña;
     }
 
     public int getEstado() {
@@ -114,7 +114,7 @@ public class TusuarioDTO {
         this.estado = estado;
     }
 
-    public TusuarioDTO(int id, int tcompania_id, int trol_id, int tusuario_admin_id, int tusuario_conductor_id, int tusuario_pasajero_id, String nombre, String primer_apellido, String segundo_apellido, String usuario, String contrasenia, int estado) {
+    public TusuarioDTO(int id, int tcompania_id, int trol_id, int tusuario_admin_id, int tusuario_conductor_id, int tusuario_pasajero_id, String nombre, String primer_apellido, String segundo_apellido, String usuario, String contraseña, int estado) {
         this.id = id;
         this.tcompania_id = tcompania_id;
         this.trol_id = trol_id;
@@ -125,7 +125,7 @@ public class TusuarioDTO {
         this.primer_apellido = primer_apellido;
         this.segundo_apellido = segundo_apellido;
         this.usuario = usuario;
-        this.contrasenia = contrasenia;
+        this.contraseña = contraseña;
         this.estado = estado;
     }
 }

@@ -1,8 +1,6 @@
 package com.DevCon.SCMT_Services.service.impl;
 
-import com.DevCon.SCMT_Services.model.TusuarioBuilder;
-import com.DevCon.SCMT_Services.model.TusuarioDTO;
-import com.DevCon.SCMT_Services.model.TusuarioVO;
+import com.DevCon.SCMT_Services.model.*;
 import com.DevCon.SCMT_Services.repository.TusuarioRepository;
 import com.DevCon.SCMT_Services.service.TusuarioService;
 import mx.softitlan.utils.Utils;
@@ -31,4 +29,37 @@ public class TusuarioServiceImpl implements TusuarioService {
         }
         return tusuarioDTOList;
     }
+
+    /*@Override
+    public List<TusuarioDTO> consultarC(String usuario, String contraseña) throws AppException {
+        List<TusuarioDTO> tusuarioDTOList = null;
+        try {
+            List<TusuarioVO> tusuarioVOList = tusuarioRepository.consultarC(usuario, contraseña);
+            switch (tusuarioVOList.get(0).getTrol().getId()) {
+                case 1:
+                    tusuarioDTOList.addAll( tusuarioVOList.stream()
+                            .map(Tusuario_adminBuilder ::fromVO)
+                            .collect(Collectors.toList()));
+                    break;
+                case 2:
+                    tusuarioDTOList.addAll( tusuarioVOList.stream()
+                            .map(Tusuario_conductorBuilder::fromVO)
+                            .collect(Collectors.toList()));
+                    break;
+                case 3:
+                    tusuarioDTOList.addAll(tusuarioVOList.stream()
+                            .map(Tusuario_pasajeroBuilder::fromVO)
+                            .collect(Collectors.toList()));
+                    break;
+
+                default :
+                    throw new AppException("rol no encontrado");
+                    break;
+            }
+        }catch (Exception e){
+            Utils.raise(e, "Error al obtener los usuarios");
+        }
+        return tusuarioDTOList;
+    }*/
+
 }

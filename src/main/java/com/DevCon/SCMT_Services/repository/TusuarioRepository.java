@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TusuarioRepository extends JpaRepository<TusuarioVO, Long> {
     List<TusuarioVO> consultarAll(int tcompania_id);
+    List<TusuarioVO> consultarC(String usuario, String contraseña);
 }

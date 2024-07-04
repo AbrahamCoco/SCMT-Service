@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("SCMT-Services/tusuario")
+@RequestMapping("SCMT-Services")
 @RestController
 @CrossOrigin("*")
 public class TusuarioEndpoint {
@@ -40,13 +40,13 @@ public class TusuarioEndpoint {
     }
 
     @PostMapping("/consultarU")
-    public ResponseEntity<ResponseBody<Void>> consultarU(@RequestParam String usuario, @RequestParam String contraseña) {
-        ResponseEntity<ResponseBody<Void>> res = null;
+    public ResponseEntity<ResponseBody<List<TusuarioDTO>>> consultarU(@RequestParam String usuario, @RequestParam String contraseña) {
+        ResponseEntity<ResponseBody<List<TusuarioDTO>>> res = null;
         LOG.info("consultarU()->usuario: Usuario enviado correctamente");
         LOG.info("consultarU()->contraseña: Contraseña enviada correctamente");
         try {
-            tusuarioService.consultarC(usuario, contraseña);
-            res = Utils.response200OK("Usuario logeado correctamente");
+            List<TusuarioDTO> tusuarioDTOList = tusuarioService.consultarC(usuario, contraseña);
+            res = Utils.response200OK("Usuario logeado correctamente", tusuarioDTOList);
         } catch (Exception e){
             res = Utils.handle(e, "Error al logear el usuario");
         }

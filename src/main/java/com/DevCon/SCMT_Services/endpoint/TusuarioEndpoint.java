@@ -38,4 +38,19 @@ public class TusuarioEndpoint {
         LOG.info("consultarAll()->Response: {} ", res);
         return res;
     }
+
+    @PostMapping("/consultarU")
+    public ResponseEntity<ResponseBody<Void>> consultarU(@RequestParam String usuario, @RequestParam String contraseña) {
+        ResponseEntity<ResponseBody<Void>> res = null;
+        LOG.info("consultarU()->usuario: Usuario enviado correctamente");
+        LOG.info("consultarU()->contraseña: Contraseña enviada correctamente");
+        try {
+            tusuarioService.consultarC(usuario, contraseña);
+            res = Utils.response200OK("Usuario logeado correctamente");
+        } catch (Exception e){
+            res = Utils.handle(e, "Error al logear el usuario");
+        }
+        LOG.info("consultarU()->Response: {} ", res);
+        return res;
+    }
 }

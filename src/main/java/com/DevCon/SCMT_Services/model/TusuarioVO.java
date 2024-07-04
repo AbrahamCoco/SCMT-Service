@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "tusuario")
 @NamedQueries({
         @NamedQuery(name = "TusuarioVO.consultarAll", query = "select c from TusuarioVO c where c.Tcompania.id = :tcompania_id and estado = 1"),
-        @NamedQuery(name = "TusuarioVO.consultarC", query = "select c.id, c.nombre, c.primer_apellido, c.segundo_apellido, c.Tcompania.id, c.Trol.id, c.Tusuario_admin.id, c.Tusuario_conductor.id, c.Tusuario_pasajero.id, c.usuario from TusuarioVO c where c.usuario = :usuario and c.contraseña = :contraseña and c.estado = 1"),
+        @NamedQuery(name = "TusuarioVO.consultarC", query = "select c from TusuarioVO c where c.usuario = :usuario and c.contraseña = :contraseña and c.estado = 1"),
 })
 public class TusuarioVO {
     @Id

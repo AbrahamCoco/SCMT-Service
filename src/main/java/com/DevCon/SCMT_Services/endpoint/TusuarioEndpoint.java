@@ -25,14 +25,14 @@ public class TusuarioEndpoint {
     @Autowired
     TusuarioRepository tusuarioRepository;
 
-    @GetMapping("/consultarAll/{tcompania_id}")
-    public ResponseEntity<ResponseBody<List<TusuarioDTO>>> consultarAll(@PathVariable int tcompania_id){
+    @GetMapping("/consultarAll")
+    public ResponseEntity<ResponseBody<List<TusuarioDTO>>> consultarAll(@RequestParam("compania") int tcompania_id) {
         ResponseEntity<ResponseBody<List<TusuarioDTO>>> res = null;
         LOG.info("consultarAll()->Response: {} ", tcompania_id);
         try {
             List<TusuarioDTO> tusuarioDTOList = tusuarioService.consultarAll(tcompania_id);
             res = Utils.response200OK("Lista de usuarios", tusuarioDTOList);
-        }catch (Exception e){
+        } catch (Exception e) {
             res = Utils.handle(e, "Error al obtener los usuarios");
         }
         LOG.info("consultarAll()->Response: {} ", res);

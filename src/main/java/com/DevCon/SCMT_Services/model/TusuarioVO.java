@@ -5,8 +5,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tusuario")
 @NamedQueries({
-        @NamedQuery(name = "TusuarioVO.consultarAll", query = "select c from TusuarioVO c where c.Tcompania.id = :tcompania_id and estado = 1"),
-        @NamedQuery(name = "TusuarioVO.consultarC", query = "select c from TusuarioVO c where c.usuario = :usuario and c.contraseña = :contraseña and c.estado = 1"),
+        @NamedQuery(
+                name = "TusuarioVO.consultarAll",
+                query = "select c from TusuarioVO c where c.Tcompania.id = :tcompania_id and estado = 1"
+        ),
+        @NamedQuery(
+                name = "TusuarioVO.consultarC",
+                query = "select c from TusuarioVO c where c.usuario = :usuario and c.contraseña = :contraseña and c.estado = 1"
+        ),
 })
 public class TusuarioVO {
     @Id

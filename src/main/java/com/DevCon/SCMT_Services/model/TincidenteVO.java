@@ -4,6 +4,17 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tincidente")
+@NamedQueries({
+        @NamedQuery(
+                name = "TincidenteVO.consultarInformeIncidencia",
+                query = "select u.nombre, u.primerApellido, u.segundoApellido, i.nombre as nombreIncidente, i.descripcion, i.fecha, i.hora, r.nombre as nombreRuta " +
+                        "from TincidenteVO i " +
+                        "join i.tusuario u " +
+                        "join i.truta r " +
+                        "where i.fecha between :inicio and :fin " +
+                        "and i.estado = 1"
+        ),
+})
 public class TincidenteVO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,15 +1,19 @@
 package com.DevCon.SCMT_Services.endpoint;
 
+import com.DevCon.SCMT_Services.model.TincidenteDTO;
 import com.DevCon.SCMT_Services.repository.TincidenteRepository;
 import com.DevCon.SCMT_Services.service.TincidenteService;
+import mx.softitlan.utils.ResponseBody;
+import mx.softitlan.utils.Utils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-@RequestMapping("SCMT-Services/tincidente")
+import java.util.List;
+
+@RequestMapping("SCMT-Services")
 @RestController
 @CrossOrigin("*")
 public class TincidenteEndpoint {
@@ -20,4 +24,19 @@ public class TincidenteEndpoint {
 
     @Autowired
     TincidenteRepository ticidenteRepository;
+
+    @GetMapping("/consultarInformeIncidencia")
+    public ResponseEntity<ResponseBody<List<TincidenteDTO>>> consultarInformeIncidencias(@RequestParam("inicio") String inicio, @RequestParam("fin") String fin) {
+        ResponseEntity<ResponseBody<List<TincidenteDTO>>> res = null;
+        LOG.info("Consultar informeIncidencia()->Inicio->Response: {} ", inicio);
+        LOG.info("Consultar informeIncidencia()->Fin->Response: {} ", fin);
+        try {
+            List<TincidenteDTO> tincidenteDTOList = tincidenteService.getInformeIncidencias(inicio, fin);
+            res = Utils.response200OK("Lista de incidencias", tincidenteDTOList);
+        } catch (Exception e) {
+            res = Utils.handle(e, "Error al obtener las incidencias");
+        }
+        LOG.info("Consultar informeIncidencia()->Response: {} ");
+        return null;
+    }
 }

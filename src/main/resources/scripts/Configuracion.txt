@@ -1,0 +1,50 @@
+Pasos:
+    1.- Clonar el repositorio.
+    2.- Agregar la siguiente dependencia :
+        <dependency>
+       		<groupId>mx.softitlan</groupId>
+        	<artifactId>utils</artifactId>
+        	<version>1.0.0-SNAPSHOT</version>
+     		<scope>compile</scope>
+        </dependency>
+    3.- Crear un archivo llamado "settings.xml" en la siguiente ruta C:\Users\TUUSUARIO\.m2 con el siguiente contenido en el archivo:
+        <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
+                              http://maven.apache.org/xsd/settings-1.0.0.xsd">
+
+              <activeProfiles>
+                <activeProfile>github</activeProfile>
+            </activeProfiles>
+
+            <profiles>
+                <profile>
+                    <id>github</id>
+                    <repositories>
+                        <repository>
+                            <id>central</id>
+                            <url>https://repo1.maven.org/maven2</url>
+                        </repository>
+                        <repository>
+                            <id>github</id>
+                            <url>https://maven.pkg.github.com/softitlanmx/softitlan-java-utils</url>
+                            <snapshots>
+                                <enabled>true</enabled>
+                            </snapshots>
+                        </repository>
+                    </repositories>
+                </profile>
+            </profiles>
+           <servers>
+                <server>
+                    <id>github</id>
+                    <username>AbrahamCoco</username>
+                    <password></password>
+                </server>
+            </servers>
+        </settings>
+        Dentro del settings debes agregar tu usuario de github y en password un Personal access tokens
+        anexo como crear un personal access token:
+        https://docs.github.com/es/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens
+    4.- Ejecutar el comando: clean maven
+    5.- Depues el comando: maven install

@@ -5,7 +5,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "tincidente")
 @NamedQueries({
-            @NamedQuery(name = "TincidenteVO.consultarInformeIncidencia", query = "SELECT c FROM TincidenteVO c WHERE c.fecha BETWEEN :inicio AND :fin AND c.estado = 1")
+        @NamedQuery(name = "TincidenteVO.consultarInformeIncidencia", query = "SELECT c FROM TincidenteVO c WHERE c.fecha BETWEEN :inicio AND :fin AND c.estado = 1")
 })
 public class TincidenteVO {
     @Id
@@ -17,7 +17,7 @@ public class TincidenteVO {
     private TrutaVO Truta;
     @ManyToOne
     @JoinColumn(name = "tusuario_id", referencedColumnName = "id")
-    private TusuarioVO Tusuario;
+    private TusuarioVO tusuario;
     private String nombre;
     private String descripcion;
     private String fecha;
@@ -41,11 +41,11 @@ public class TincidenteVO {
     }
 
     public TusuarioVO getTusuario() {
-        return Tusuario;
+        return tusuario;
     }
 
     public void setTusuario(TusuarioVO tusuario) {
-        Tusuario = tusuario;
+        this.tusuario = tusuario;
     }
 
     public String getNombre() {

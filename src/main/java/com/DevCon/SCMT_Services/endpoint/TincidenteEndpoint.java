@@ -36,7 +36,7 @@ public class TincidenteEndpoint {
         } catch (Exception e) {
             res = Utils.handle(e, "Error al obtener las incidencias");
         }
-        LOG.info("Consultar informeIncidencia()->Response: {} ");
-        return null;
+        LOG.info("Consultar informeIncidencia()->Response: {} ", res);
+        return res;
     }
 }

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.36, for Win64 (x86_64)
 --
--- Host: scmt.mysql.database.azure.com    Database: scmt
+-- Host: 127.0.0.1    Database: scmt
 -- ------------------------------------------------------
--- Server version	5.7.44-log
+-- Server version	5.5.5-10.1.38-MariaDB
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -23,15 +23,19 @@ DROP TABLE IF EXISTS `tasistencia`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tasistencia` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `truta_id` int(11) NOT NULL,
-  `tusuario_id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `truta_id` int(11) unsigned NOT NULL,
+  `tusuario_id` int(11) unsigned NOT NULL,
   `asistencia` int(11) NOT NULL DEFAULT '0',
   `fecha` date NOT NULL,
   `hora` time NOT NULL,
   `estado` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `hora` (`hora`)
+  UNIQUE KEY `hora` (`hora`),
+  KEY `truta_id` (`truta_id`),
+  KEY `tusuario_id` (`tusuario_id`),
+  CONSTRAINT `tasistencia_ibfk_1` FOREIGN KEY (`truta_id`) REFERENCES `truta` (`id`),
+  CONSTRAINT `tasistencia_ibfk_2` FOREIGN KEY (`tusuario_id`) REFERENCES `tusuario` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -53,7 +57,7 @@ DROP TABLE IF EXISTS `tcompania`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tcompania` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `nombre` varchar(80) NOT NULL,
   `descripcion` varchar(150) NOT NULL,
   `telefono` varchar(10) NOT NULL,
@@ -80,15 +84,19 @@ DROP TABLE IF EXISTS `tincidente`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tincidente` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `truta_id` int(11) NOT NULL,
-  `tusuario_id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `truta_id` int(11) unsigned NOT NULL,
+  `tusuario_id` int(11) unsigned NOT NULL,
   `nombre` varchar(120) NOT NULL,
   `descripcion` varchar(250) NOT NULL,
   `fecha` date DEFAULT NULL,
   `hora` time DEFAULT NULL,
   `estado` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `truta_id` (`truta_id`),
+  KEY `tusuario_id` (`tusuario_id`),
+  CONSTRAINT `tincidente_ibfk_1` FOREIGN KEY (`truta_id`) REFERENCES `truta` (`id`),
+  CONSTRAINT `tincidente_ibfk_2` FOREIGN KEY (`tusuario_id`) REFERENCES `tusuario` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -110,7 +118,7 @@ DROP TABLE IF EXISTS `trol`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `trol` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(150) NOT NULL,
   `estado` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`)
@@ -135,9 +143,9 @@ DROP TABLE IF EXISTS `truta`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `truta` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `tcompania_id` int(11) NOT NULL,
-  `tusuario_id_conductor` int(11) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `tcompania_id` int(11) unsigned NOT NULL,
+  `tusuario_id_conductor` int(11) unsigned DEFAULT NULL,
   `nombre` varchar(120) NOT NULL,
   `descripcion` varchar(150) NOT NULL,
   `punto_acceso` varchar(100) NOT NULL,
@@ -145,7 +153,11 @@ CREATE TABLE `truta` (
   `estado` int(11) NOT NULL DEFAULT '1',
   `qr` varchar(80) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  UNIQUE KEY `vehiculo` (`vehiculo`)
+  UNIQUE KEY `vehiculo` (`vehiculo`),
+  KEY `tcompania_id` (`tcompania_id`),
+  KEY `tusuario_id_conductor` (`tusuario_id_conductor`),
+  CONSTRAINT `truta_ibfk_1` FOREIGN KEY (`tcompania_id`) REFERENCES `tcompania` (`id`),
+  CONSTRAINT `truta_ibfk_2` FOREIGN KEY (`tusuario_id_conductor`) REFERENCES `tusuario_conductor` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -167,11 +179,15 @@ DROP TABLE IF EXISTS `truta_usuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `truta_usuario` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `truta_id` int(11) NOT NULL,
-  `tusuario_id` int(11) NOT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `truta_id` int(11) unsigned NOT NULL,
+  `tusuario_id` int(11) unsigned NOT NULL,
   `estado` int(11) NOT NULL DEFAULT '1',
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `truta_id` (`truta_id`),
+  KEY `tusuario_id` (`tusuario_id`),
+  CONSTRAINT `truta_usuario_ibfk_1` FOREIGN KEY (`truta_id`) REFERENCES `truta` (`id`),
+  CONSTRAINT `truta_usuario_ibfk_2` FOREIGN KEY (`tusuario_id`) REFERENCES `tusuario` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -193,12 +209,12 @@ DROP TABLE IF EXISTS `tusuario`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tusuario` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `tcompania_id` int(11) NOT NULL,
-  `trol_id` int(11) NOT NULL,
-  `tusuario_admin_id` int(11) DEFAULT NULL,
-  `tusuario_conductor_id` int(11) DEFAULT NULL,
-  `tusuario_pasajero_id` int(11) DEFAULT NULL,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `tcompania_id` int(11) unsigned NOT NULL,
+  `trol_id` int(11) unsigned NOT NULL,
+  `tusuario_admin_id` int(11) unsigned DEFAULT NULL,
+  `tusuario_conductor_id` int(11) unsigned DEFAULT NULL,
+  `tusuario_pasajero_id` int(11) unsigned DEFAULT NULL,
   `nombre` varchar(150) NOT NULL,
   `primer_apellido` varchar(100) NOT NULL,
   `segundo_apellido` varchar(100) NOT NULL,
@@ -206,7 +222,17 @@ CREATE TABLE `tusuario` (
   `contraseña` varchar(25) NOT NULL,
   `estado` int(11) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `usuario` (`usuario`)
+  UNIQUE KEY `usuario` (`usuario`),
+  KEY `tcompania_id` (`tcompania_id`),
+  KEY `trol_id` (`trol_id`),
+  KEY `tusuario_admin_id` (`tusuario_admin_id`),
+  KEY `tusuario_conductor_id` (`tusuario_conductor_id`),
+  KEY `tusuario_pasajero_id` (`tusuario_pasajero_id`),
+  CONSTRAINT `tusuario_ibfk_1` FOREIGN KEY (`tcompania_id`) REFERENCES `tcompania` (`id`),
+  CONSTRAINT `tusuario_ibfk_2` FOREIGN KEY (`trol_id`) REFERENCES `trol` (`id`),
+  CONSTRAINT `tusuario_ibfk_3` FOREIGN KEY (`tusuario_admin_id`) REFERENCES `tusuario_admin` (`id`),
+  CONSTRAINT `tusuario_ibfk_4` FOREIGN KEY (`tusuario_conductor_id`) REFERENCES `tusuario_conductor` (`id`),
+  CONSTRAINT `tusuario_ibfk_5` FOREIGN KEY (`tusuario_pasajero_id`) REFERENCES `tusuario_pasajero` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -228,7 +254,7 @@ DROP TABLE IF EXISTS `tusuario_admin`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tusuario_admin` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `fotografia` varchar(80) NOT NULL,
   `descripcion` varchar(250) NOT NULL,
   `telefono` varchar(10) NOT NULL,
@@ -255,7 +281,7 @@ DROP TABLE IF EXISTS `tusuario_conductor`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tusuario_conductor` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `id_empleado` int(11) NOT NULL,
   `fotografia` varchar(80) NOT NULL,
   `direccion` varchar(250) NOT NULL,
@@ -284,7 +310,7 @@ DROP TABLE IF EXISTS `tusuario_pasajero`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `tusuario_pasajero` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `id_pasajero` int(11) NOT NULL,
   `fotografia` varchar(80) NOT NULL,
   `telefono` varchar(10) NOT NULL,
@@ -315,4 +341,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-03-28 19:34:07
+-- Dump completed on 2024-08-16 16:05:43

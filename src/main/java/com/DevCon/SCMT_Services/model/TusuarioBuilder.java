@@ -16,37 +16,37 @@ public class TusuarioBuilder {
         tusuarioDTO.setTrol_estado(tusuarioVO.getTrol().getEstado());
 
         if (tusuarioDTO.getTrol_id() == 1 ) {
-            if (tusuarioVO.getTusuario_admin() != null && tusuarioVO.getTusuario_admin().getId() != null) {
-                tusuarioDTO.setTusuario_admin_id(tusuarioVO.getTusuario_admin().getId());
-                tusuarioDTO.setTusuario_admin_fotografia(tusuarioVO.getTusuario_admin().getFotografia());
-                tusuarioDTO.setTusuario_admin_descripcion(tusuarioVO.getTusuario_admin().getDescripcion());
-                tusuarioDTO.setTusuario_admin_telefono(tusuarioVO.getTusuario_admin().getTelefono());
-                tusuarioDTO.setTusuario_admin_estado(tusuarioVO.getTusuario_admin().getEstado());
+            if (tusuarioVO.getAdministrador() != null && tusuarioVO.getAdministrador().getId() != null) {
+                tusuarioDTO.setTusuario_admin_id(tusuarioVO.getAdministrador().getId());
+                tusuarioDTO.setTusuario_admin_fotografia(tusuarioVO.getAdministrador().getFotografia());
+                tusuarioDTO.setTusuario_admin_descripcion(tusuarioVO.getAdministrador().getDescripcion());
+                tusuarioDTO.setTusuario_admin_telefono(tusuarioVO.getAdministrador().getTelefono());
+                tusuarioDTO.setTusuario_admin_estado(tusuarioVO.getAdministrador().getEstado());
             } else {
 
             }
         } else if (tusuarioDTO.getTrol_id() == 2 ) {
-            if (tusuarioVO.getTusuario_conductor() != null && tusuarioVO.getTusuario_conductor().getId() != null) {
-                tusuarioDTO.setTusuario_conductor_id(tusuarioVO.getTusuario_conductor().getId());
-                tusuarioDTO.setTusuario_conductor_id_empleado(tusuarioVO.getTusuario_conductor().getId_empleado());
-                tusuarioDTO.setTusuario_conductor_fotografia(tusuarioVO.getTusuario_conductor().getFotografia());
-                tusuarioDTO.setTusuario_conductor_direccion(tusuarioVO.getTusuario_conductor().getDireccion());
-                tusuarioDTO.setTusuario_conductor_telefono(tusuarioVO.getTusuario_conductor().getTelefono());
-                tusuarioDTO.setTusuario_conductor_id_licencia(tusuarioVO.getTusuario_conductor().getId_licencia());
-                tusuarioDTO.setTusuario_conductor_estado(tusuarioVO.getTusuario_conductor().getEstado());
+            /*if (tusuarioVO.getConductor() != null && tusuarioVO.getConductor().getId() != null) {
+                tusuarioDTO.setTusuario_conductor_id(tusuarioVO.getConductor().getId());
+                tusuarioDTO.setTusuario_conductor_id_empleado(tusuarioVO.getConductor().getId_empleado());
+                tusuarioDTO.setTusuario_conductor_fotografia(tusuarioVO.getConductor().getFotografia());
+                tusuarioDTO.setTusuario_conductor_direccion(tusuarioVO.getConductor().getDireccion());
+                tusuarioDTO.setTusuario_conductor_telefono(tusuarioVO.getConductor().getTelefono());
+                tusuarioDTO.setTusuario_conductor_id_licencia(tusuarioVO.getConductor().getId_licencia());
+                tusuarioDTO.setTusuario_conductor_estado(tusuarioVO.getConductor().getEstado());
             } else {
 
-            }
+            }*/
         } else if (tusuarioDTO.getTrol_id() == 3) {
-            if (tusuarioVO.getTusuario_pasajero() != null && tusuarioVO.getTusuario_pasajero().getId() != null) {
-                tusuarioDTO.setTusuario_pasajero_id(tusuarioVO.getTusuario_pasajero().getId());
-                tusuarioDTO.setTusuario_pasajero_id_pasajero(tusuarioVO.getTusuario_pasajero().getId_pasajero());
-                tusuarioDTO.setTusuario_pasajero_fotografia(tusuarioVO.getTusuario_pasajero().getFotografia());
-                tusuarioDTO.setTusuario_pasajero_telefono(tusuarioVO.getTusuario_pasajero().getTelefono());
-                tusuarioDTO.setTusuario_pasajero_area(tusuarioVO.getTusuario_pasajero().getArea());
-                tusuarioDTO.setTusuario_pasajero_jefe_inmediato(tusuarioVO.getTusuario_pasajero().getJefe_inmediato());
-                tusuarioDTO.setTusuario_pasajero_turno(tusuarioVO.getTusuario_pasajero().getTurno());
-                tusuarioDTO.setTusuario_pasajero_estado(tusuarioVO.getTusuario_pasajero().getEstado());
+            if (tusuarioVO.getPasajero() != null && tusuarioVO.getPasajero().getId() != null) {
+                tusuarioDTO.setTusuario_pasajero_id(tusuarioVO.getPasajero().getId());
+                tusuarioDTO.setTusuario_pasajero_id_pasajero(tusuarioVO.getPasajero().getId_pasajero());
+                tusuarioDTO.setTusuario_pasajero_fotografia(tusuarioVO.getPasajero().getFotografia());
+                tusuarioDTO.setTusuario_pasajero_telefono(tusuarioVO.getPasajero().getTelefono());
+                tusuarioDTO.setTusuario_pasajero_area(tusuarioVO.getPasajero().getArea());
+                tusuarioDTO.setTusuario_pasajero_jefe_inmediato(tusuarioVO.getPasajero().getJefe_inmediato());
+                tusuarioDTO.setTusuario_pasajero_turno(tusuarioVO.getPasajero().getTurno());
+                tusuarioDTO.setTusuario_pasajero_estado(tusuarioVO.getPasajero().getEstado());
             } else {
 
             }
@@ -70,11 +70,11 @@ public class TusuarioBuilder {
         tusuarioVO.setTrol(new TrolVO());
 
         if (tusuarioDTO.getTrol_id() == 1) {
-            tusuarioVO.setTusuario_admin(new Tusuario_adminVO());
+            tusuarioVO.setAdministrador(new Tusuario_adminVO());
         } else if (tusuarioDTO.getTrol_id() == 2) {
-            tusuarioVO.setTusuario_conductor(new Tusuario_conductorVO());
+            // tusuarioVO.setConductor(new Tusuario_conductorVO());
         } else if (tusuarioDTO.getTrol_id() == 3) {
-            tusuarioVO.setTusuario_pasajero(new Tusuario_pasajeroVO());
+            tusuarioVO.setPasajero(new Tusuario_pasajeroVO());
         }
 
         tusuarioVO.setNombre(tusuarioDTO.getNombre());

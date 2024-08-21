@@ -1,4 +1,4 @@
-package com.DevCon.SCMT_Services.model;
+/*package com.DevCon.SCMT_Services.model;
 
 import javax.persistence.*;
 
@@ -72,3 +72,4 @@ public class Tusuario_conductorVO {
         this.estado = estado;
     }
 }
+*/

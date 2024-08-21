@@ -12,9 +12,9 @@ public class TrutaVO {
     @ManyToOne
     @JoinColumn(name = "tcompania_id", referencedColumnName = "id")
     private TcompaniaVO Tcompania;
-    @ManyToOne
-    @JoinColumn(name = "tusuario_id_conductor", referencedColumnName = "id")
-    private Tusuario_conductorVO Tusuario_conductor;
+    // @ManyToOne
+    // @JoinColumn(name = "tusuario_id_conductor", referencedColumnName = "id")
+    // private Tusuario_conductorVO Tusuario_conductor;
     private String nombre;
     private String descripcion;
     private String punto_acceso;
@@ -38,13 +38,13 @@ public class TrutaVO {
         Tcompania = tcompania;
     }
 
-    public Tusuario_conductorVO getTusuario_conductor() {
+    /* public Tusuario_conductorVO getTusuario_conductor() {
         return Tusuario_conductor;
     }
 
     public void setTusuario_conductor(Tusuario_conductorVO tusuario_conductor) {
         Tusuario_conductor = tusuario_conductor;
-    }
+    }*/
 
     public String getNombre() {
         return nombre;

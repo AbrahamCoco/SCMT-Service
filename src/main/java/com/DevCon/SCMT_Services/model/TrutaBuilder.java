@@ -6,7 +6,7 @@ public class TrutaBuilder {
         trutaDTO.setId(trutaVO.getId());
 
         trutaDTO.setTcompania_id(trutaVO.getTcompania().getId());
-        trutaDTO.setTusuario_id_conductor(trutaVO.getTusuario_conductor().getId());
+        // trutaDTO.setTusuario_id_conductor(trutaVO.getTusuario_conductor().getId());
 
         trutaDTO.setNombre(trutaVO.getNombre());
         trutaDTO.setDescripcion(trutaVO.getDescripcion());
@@ -22,7 +22,7 @@ public class TrutaBuilder {
         trutaVO.setId(trutaDTO.getId());
 
         trutaVO.setTcompania(new TcompaniaVO());
-        trutaVO.setTusuario_conductor(new Tusuario_conductorVO());
+        // trutaVO.setTusuario_conductor(new Tusuario_conductorVO());
 
         trutaVO.setNombre(trutaDTO.getNombre());
         trutaVO.setDescripcion(trutaDTO.getDescripcion());

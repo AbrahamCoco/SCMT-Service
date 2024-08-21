@@ -17,7 +17,7 @@ public class TincidenteVO {
     private TrutaVO Truta;
     @ManyToOne
     @JoinColumn(name = "tusuario_id", referencedColumnName = "id")
-    private TusuarioVO tusuario;
+    private TusuarioVO Tusuario;
     private String nombre;
     private String descripcion;
     private String fecha;
@@ -41,11 +41,11 @@ public class TincidenteVO {
     }
 
     public TusuarioVO getTusuario() {
-        return tusuario;
+        return Tusuario;
     }
 
     public void setTusuario(TusuarioVO tusuario) {
-        this.tusuario = tusuario;
+        this.Tusuario = tusuario;
     }
 
     public String getNombre() {

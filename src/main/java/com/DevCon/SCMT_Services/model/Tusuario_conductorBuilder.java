@@ -1,4 +1,4 @@
-package com.DevCon.SCMT_Services.model;
+/*package com.DevCon.SCMT_Services.model;
 
 public class Tusuario_conductorBuilder {
     public static Tusuario_conductorDTO fromVO(Tusuario_conductorVO tusuario_conductorVO) {
@@ -27,3 +27,4 @@ public class Tusuario_conductorBuilder {
         return tusuario_conductorVO;
     }
 }
+*/

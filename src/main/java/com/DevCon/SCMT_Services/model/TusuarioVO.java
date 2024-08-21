@@ -27,13 +27,13 @@ public class TusuarioVO {
     private TrolVO Trol;
     @ManyToOne
     @JoinColumn(name = "tusuario_admin_id", referencedColumnName = "id")
-    private Tusuario_adminVO Tusuario_admin;
-    @ManyToOne
-    @JoinColumn(name = "tusuario_conductor_id", referencedColumnName = "id")
-    private Tusuario_conductorVO Tusuario_conductor;
+    private Tusuario_adminVO Administrador;
+    // @ManyToOne
+    // @JoinColumn(name = "tusuario_conductor_id", referencedColumnName = "id")
+    // private Tusuario_conductorVO Conductor;
     @ManyToOne
     @JoinColumn(name = "tusuario_pasajero_id", referencedColumnName = "id")
-    private Tusuario_pasajeroVO Tusuario_pasajero;
+    private Tusuario_pasajeroVO Pasajero;
     private String nombre;
     private String primer_apellido;
     private String segundo_apellido;
@@ -65,28 +65,28 @@ public class TusuarioVO {
         Trol = trol;
     }
 
-    public Tusuario_adminVO getTusuario_admin() {
-        return Tusuario_admin;
+    public Tusuario_adminVO getAdministrador() {
+        return Administrador;
     }
 
-    public void setTusuario_admin(Tusuario_adminVO tusuario_admin) {
-        Tusuario_admin = tusuario_admin;
+    public void setAdministrador(Tusuario_adminVO tusuario_admin) {
+        Administrador = tusuario_admin;
     }
 
-    public Tusuario_conductorVO getTusuario_conductor() {
+    /* public Tusuario_conductorVO getTusuario_conductor() {
         return Tusuario_conductor;
     }
 
     public void setTusuario_conductor(Tusuario_conductorVO tusuario_conductor) {
         Tusuario_conductor = tusuario_conductor;
+    }*/
+
+    public Tusuario_pasajeroVO getPasajero() {
+        return Pasajero;
     }
 
-    public Tusuario_pasajeroVO getTusuario_pasajero() {
-        return Tusuario_pasajero;
-    }
-
-    public void setTusuario_pasajero(Tusuario_pasajeroVO tusuario_pasajero) {
-        Tusuario_pasajero = tusuario_pasajero;
+    public void setPasajero(Tusuario_pasajeroVO tusuario_pasajero) {
+        Pasajero = tusuario_pasajero;
     }
 
     public String getNombre() {

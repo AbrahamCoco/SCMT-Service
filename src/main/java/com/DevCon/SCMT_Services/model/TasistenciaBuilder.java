@@ -6,8 +6,14 @@ public class TasistenciaBuilder {
         tasistenciaDTO.setId(tasistenciaVO.getId());
 
         tasistenciaDTO.setTruta_id(tasistenciaVO.getTruta().getId());
+        tasistenciaDTO.setTruta_nombre(tasistenciaVO.getTruta().getNombre());
 
         tasistenciaDTO.setTusuario_id(tasistenciaVO.getTusuario().getId());
+        tasistenciaDTO.setTusuario_area(tasistenciaVO.getTusuario().getPasajero().getArea());
+        tasistenciaDTO.setTusuario_jefeinmediato(tasistenciaVO.getTusuario().getPasajero().getJefe_inmediato());
+        tasistenciaDTO.setTusuario_nombre(tasistenciaVO.getTusuario().getNombre());
+        tasistenciaDTO.setTusuario_primerapellido(tasistenciaVO.getTusuario().getPrimer_apellido());
+        tasistenciaDTO.setTusuario_segundoapellido(tasistenciaVO.getTusuario().getSegundo_apellido());
 
         tasistenciaDTO.setAsistencia(tasistenciaVO.getAsistencia());
         tasistenciaDTO.setFecha(tasistenciaVO.getFecha());

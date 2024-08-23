@@ -4,6 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "tasistencia")
+@NamedQueries({
+        @NamedQuery(
+                name = "TasistenciaVO.consultarInformeAsistencia",
+                query = "SELECT c FROM TasistenciaVO c WHERE c.fecha BETWEEN :inicio AND :fin AND c.estado = 1"
+        )
+})
 public class TasistenciaVO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

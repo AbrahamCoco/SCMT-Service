@@ -17,6 +17,7 @@ public class TincidenteBuilder {
         tincidenteDTO.setTusuario_segundoapellido(tincidenteVO.getTusuario().getSegundo_apellido());
         tincidenteDTO.setTusuario_usuario(tincidenteVO.getTusuario().getUsuario());
 
+        tincidenteDTO.setNombre(tincidenteVO.getNombre());
         tincidenteDTO.setDescripcion(tincidenteVO.getDescripcion());
         tincidenteDTO.setFecha(tincidenteVO.getFecha());
         tincidenteDTO.setHora(tincidenteVO.getHora());

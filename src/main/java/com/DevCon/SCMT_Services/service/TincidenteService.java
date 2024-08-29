@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TincidenteService {
     List<TincidenteDTO> getInformeIncidencias(String inicio, String fin) throws AppException;
+    List<TincidenteDTO> getIncidencias(int truta_id) throws AppException;
 }

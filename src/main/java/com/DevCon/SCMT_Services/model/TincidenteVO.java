@@ -8,7 +8,11 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "TincidenteVO.consultarInformeIncidencia",
                 query = "SELECT c FROM TincidenteVO c WHERE c.fecha BETWEEN :inicio AND :fin AND c.estado = 1"
-        )
+        ),
+        @NamedQuery(
+                name = "TincidenteVO.consultarIncidencias",
+                query = "select c from TincidenteVO c where c.Truta.id = :truta_id and c.estado = 1"
+        ),
 })
 public class TincidenteVO {
     @Id

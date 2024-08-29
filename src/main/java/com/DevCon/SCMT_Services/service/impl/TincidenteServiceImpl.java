@@ -31,4 +31,18 @@ public class TincidenteServiceImpl implements TincidenteService {
         }
         return tincidenteDTOS;
     }
+
+    @Override
+    public List<TincidenteDTO> getIncidencias(int truta_id) throws AppException {
+        List<TincidenteDTO> tincidenteDTOSList = null;
+        try {
+            List<TincidenteVO> tincidenteVOSList = tincidenteRepository.consultarIncidencias(truta_id);
+            tincidenteDTOSList = tincidenteVOSList.stream()
+                    .map(TincidenteBuilder::fromVO)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            Utils.raise(e, "Error al obtener las incidencias");
+        }
+        return tincidenteDTOSList;
+    }
 }

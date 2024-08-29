@@ -39,4 +39,18 @@ public class TincidenteEndpoint {
         LOG.info("Consultar informeIncidencia()->Response: {} ", res);
         return res;
     }
+
+    @GetMapping("/concultarIncidencias")
+    public ResponseEntity<ResponseBody<List<TincidenteDTO>>> consultarIncidencias(@RequestParam("truta_id") int truta_id){
+        ResponseEntity<ResponseBody<List<TincidenteDTO>>> res = null;
+        LOG.info("Consultar Incidencias()->Response: {} ", truta_id);
+        try {
+            List<TincidenteDTO> tincidenteDTOList = tincidenteService.getIncidencias(truta_id);
+            res = Utils.response200OK("Lista de incidencias", tincidenteDTOList);
+        } catch (Exception e) {
+            res = Utils.handle(e, "Error al obtener las incidencias");
+        }
+        LOG.info("Consultar Incidencias()->Response: {} ", res);
+        return res;
+    }
 }

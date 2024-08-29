@@ -11,7 +11,7 @@ import javax.persistence.*;
         ),
         @NamedQuery(
                 name = "TincidenteVO.consultarIncidencias",
-                query = "select c from TincidenteVO c where c.Truta.id = :truta_id and c.estado = 1"
+                query = "select c from TincidenteVO c where c.Truta.id = :rutas and c.estado = 1"
         ),
 })
 public class TincidenteVO {

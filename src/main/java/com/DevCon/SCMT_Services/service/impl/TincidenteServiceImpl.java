@@ -33,10 +33,10 @@ public class TincidenteServiceImpl implements TincidenteService {
     }
 
     @Override
-    public List<TincidenteDTO> getIncidencias(int truta_id) throws AppException {
+    public List<TincidenteDTO> getIncidencias(int rutas) throws AppException {
         List<TincidenteDTO> tincidenteDTOSList = null;
         try {
-            List<TincidenteVO> tincidenteVOSList = tincidenteRepository.consultarIncidencias(truta_id);
+            List<TincidenteVO> tincidenteVOSList = tincidenteRepository.consultarIncidencias(rutas);
             tincidenteDTOSList = tincidenteVOSList.stream()
                     .map(TincidenteBuilder::fromVO)
                     .collect(Collectors.toList());

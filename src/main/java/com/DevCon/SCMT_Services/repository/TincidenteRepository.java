@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface TincidenteRepository extends JpaRepository<TincidenteVO, Long> {
     List<TincidenteVO> consultarInformeIncidencia(String inicio, String fin);
-    List<TincidenteVO> consultarIncidencias(int truta_id);
+    List<TincidenteVO> consultarIncidencias(int rutas);
 }

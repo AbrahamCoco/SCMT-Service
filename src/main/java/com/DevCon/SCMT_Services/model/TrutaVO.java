@@ -4,6 +4,12 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "truta")
+@NamedQueries({
+        @NamedQuery(
+                name = "TrutaVO.consultarRutas",
+                query = "select c from TrutaVO c where c.Tcompania.id = :tcompania_id and c.estado = 1"
+        )
+})
 public class TrutaVO {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

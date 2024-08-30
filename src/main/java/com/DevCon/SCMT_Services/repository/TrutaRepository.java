@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface TrutaRepository extends JpaRepository<TrutaVO, Long> {
     List<TrutaVO> consultarRutas(int tcompania_id);
+    List<TrutaVO> eliminarRuta(int id);
 }

@@ -30,4 +30,17 @@ public class TrutaServiceImpl implements TrutaService {
         }
         return trutaDTOSList;
     }
+
+    @Override
+    public void eliminarRuta(int id) throws Exception {
+        List<TrutaVO> trutaVo = null;
+        try {
+            trutaVo = trutaRepository.eliminarRuta(id);
+            if (trutaVo == null || trutaVo.isEmpty()) {
+                Utils.raise(null, "Ruta no encontrada");
+            }
+        } catch (Exception e) {
+            Utils.raise(e, "Error al eliminar la ruta");
+        }
+    }
 }

@@ -28,14 +28,28 @@ public class TrutaEndpoint {
     @GetMapping("/consultarRutas")
     public ResponseEntity<ResponseBody<List<TrutaDTO>>> consultarRutas(@RequestParam("compania") int tcompania_id){
         ResponseEntity<ResponseBody<List<TrutaDTO>>> res = null;
-        LOG.info("Consultar Rutas: {} ", tcompania_id);
+        LOG.info("Consultar Rutas->id: {} ", tcompania_id);
         try {
             List<TrutaDTO> trutaDTOList = trutaService.consultarRutas(tcompania_id);
             res = Utils.response200OK("Lista de rutas", trutaDTOList);
         } catch (Exception e) {
             res = Utils.handle(e, "Error al obtener las rutas");
         }
-        LOG.info("Consultar Rutas: {} ", tcompania_id);
+        LOG.info("Consultar Rutas->Response: {} ", res);
+        return res;
+    }
+
+    @PostMapping("/eliminarRuta")
+    public ResponseEntity<ResponseBody<Void>> eliminarRuta(@RequestParam("id") int id){
+        ResponseEntity<ResponseBody<Void>> res = null;
+        LOG.info("Eliminar Ruta->id: {} ", id);
+        try {
+            trutaService.eliminarRuta(id);
+            res = Utils.response200OK("Ruta eliminada");
+        } catch (Exception e) {
+            res = Utils.handle(e, "Error al eliminar la ruta");
+        }
+        LOG.info("Eliminar Ruta->Response: {} ", res);
         return res;
     }
 }

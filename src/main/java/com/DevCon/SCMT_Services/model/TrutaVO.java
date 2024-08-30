@@ -8,6 +8,10 @@ import javax.persistence.*;
         @NamedQuery(
                 name = "TrutaVO.consultarRutas",
                 query = "select c from TrutaVO c where c.Tcompania.id = :tcompania_id and c.estado = 1"
+        ),
+        @NamedQuery(
+                name = "TrutaVO.eliminarRuta",
+                query = "update TrutaVO c set c.estado = 0 where c.id = :id"
         )
 })
 public class TrutaVO {

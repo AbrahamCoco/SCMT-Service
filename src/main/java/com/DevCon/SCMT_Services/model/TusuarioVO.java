@@ -13,6 +13,10 @@ import javax.persistence.*;
                 name = "TusuarioVO.consultarC",
                 query = "select c from TusuarioVO c where c.usuario = :usuario and c.contraseña = :contraseña and c.estado = 1"
         ),
+        @NamedQuery(
+                name = "TusuarioVO.consultarConductores",
+                query = "select c.id, c.nombre, c.primer_apellido, c.segundo_apellido from TusuarioVO c where c.Tcompania.id = :tcompania_id and c.estado = 1 and c.Trol.id = 2"
+        )
 })
 public class TusuarioVO {
     @Id

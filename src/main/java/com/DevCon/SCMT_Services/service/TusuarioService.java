@@ -8,4 +8,5 @@ import java.util.List;
 public interface TusuarioService {
     List<TusuarioDTO> consultarAll(int tcompania_id) throws AppException;
     List<TusuarioDTO> consultarC(String usuario, String contraseña) throws AppException;
+    List<TusuarioDTO> consultarConductores(int tcompania_id) throws AppException;
 }

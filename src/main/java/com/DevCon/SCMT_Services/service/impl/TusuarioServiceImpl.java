@@ -48,4 +48,18 @@ public class TusuarioServiceImpl implements TusuarioService {
         return tusuarioDTOList;
     }
 
+    @Override
+    public List<TusuarioDTO> consultarConductores(int tcompania_id) throws AppException {
+        List<TusuarioDTO> tusuarioDTOList = null;
+        try {
+            List<TusuarioVO> tusuarioVOList = tusuarioRepository.consultarConductores(tcompania_id);
+            tusuarioDTOList = tusuarioVOList.stream()
+                    .map(TusuarioBuilder::fromVO)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            Utils.raise(e, "Error al obtener los conductores");
+        }
+        return tusuarioDTOList;
+    }
+
 }

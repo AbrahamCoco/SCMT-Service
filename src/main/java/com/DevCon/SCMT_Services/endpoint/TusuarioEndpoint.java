@@ -53,4 +53,18 @@ public class TusuarioEndpoint {
         LOG.info("Consultar Usuario()->Response: {} ", res);
         return res;
     }
+
+    @GetMapping("/consultarConductores")
+    public ResponseEntity<ResponseBody<List<TusuarioDTO>>> consultarConductores(@RequestParam("compania") int compania) {
+        ResponseEntity<ResponseBody<List<TusuarioDTO>>> res = null;
+        LOG.info("Consultar Conductores()->compania: {} ", compania);
+        try {
+            List<TusuarioDTO> tusuarioDTOList = tusuarioService.consultarConductores(compania);
+            res = Utils.response200OK("Lista de Conductores", tusuarioDTOList);
+        } catch (Exception e) {
+            res = Utils.handle(e, "Error al obtener los conductores");
+        }
+        LOG.info("Consultar Conductores()->Response: {} ", res);
+        return res;
+    }
 }

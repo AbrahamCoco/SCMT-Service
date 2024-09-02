@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -41,6 +42,21 @@ public class TrutaServiceImpl implements TrutaService {
             }
         } catch (Exception e) {
             Utils.raise(e, "Error al eliminar la ruta");
+        }
+    }
+
+    @Override
+    public void actualizarRuta(Long id, TrutaDTO trutaDTO) throws Exception {
+        TrutaVO trutaVO = null;
+        try {
+            Optional<TrutaVO> trutaVOList = trutaRepository.findById(id);
+            if (trutaVOList.isPresent()) {
+                trutaVO = TrutaBuilder.fromDTO(trutaDTO);
+                trutaVO.setId(Math.toIntExact(id));
+                trutaRepository.save(trutaVO);
+            }
+        } catch (Exception e) {
+            Utils.raise(e, "Error al actualizar la ruta");
         }
     }
 }

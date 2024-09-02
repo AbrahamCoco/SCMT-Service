@@ -52,4 +52,19 @@ public class TrutaEndpoint {
         LOG.info("Eliminar Ruta->Response: {} ", res);
         return res;
     }
+
+    @PostMapping("/actualizarRuta")
+    public ResponseEntity<ResponseBody<Void>> actualizarRuta(@RequestParam("id") Long id, @RequestBody TrutaDTO trutaDTO){
+        ResponseEntity<ResponseBody<Void>> res = null;
+        LOG.info("Actualizar Ruta->id: {} ", id);
+        LOG.info("Actualizar Ruta->trutaDTO: {} ", trutaDTO);
+        try {
+            trutaService.actualizarRuta(id, trutaDTO);
+            res = Utils.response200OK("Ruta actualizada");
+        } catch (Exception e){
+            res = Utils.handle(e, "Error al actualizar la ruta");
+        }
+        LOG.info("Actualizar Ruta->Response: {} ", res);
+        return res;
+    }
 }

@@ -15,7 +15,7 @@ import javax.persistence.*;
         ),
         @NamedQuery(
                 name = "TusuarioVO.consultarConductores",
-                query = "select c.id, c.nombre, c.primer_apellido, c.segundo_apellido from TusuarioVO c where c.Tcompania.id = :tcompania_id and c.estado = 1 and c.Trol.id = 2"
+                query = "select c from TusuarioVO c where c.Tcompania.id = :tcompania_id and c.estado = 1 and c.Trol.id = 2"
         )
 })
 public class TusuarioVO {

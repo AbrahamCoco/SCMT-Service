@@ -3,7 +3,12 @@ package com.DevCon.SCMT_Services.model;
 public class TrutaDTO {
     private Integer id;
     private Integer tcompania_id;
+
     private Integer tusuario_id_conductor;
+    private String tusuario_nombre_conductor;
+    private String tusuario_primerapellido_conductor;
+    private String tusuario_segundoapellido_conductor;
+
     private String nombre;
     private String descripcion;
     private String punto_acceso;
@@ -37,6 +42,30 @@ public class TrutaDTO {
 
     public void setTusuario_id_conductor(Integer tusuario_id_conductor) {
         this.tusuario_id_conductor = tusuario_id_conductor;
+    }
+
+    public String getTusuario_nombre_conductor() {
+        return tusuario_nombre_conductor;
+    }
+
+    public void setTusuario_nombre_conductor(String tusuario_nombre_conductor) {
+        this.tusuario_nombre_conductor = tusuario_nombre_conductor;
+    }
+
+    public String getTusuario_primerapellido_conductor() {
+        return tusuario_primerapellido_conductor;
+    }
+
+    public void setTusuario_primerapellido_conductor(String tusuario_primerapellido_conductor) {
+        this.tusuario_primerapellido_conductor = tusuario_primerapellido_conductor;
+    }
+
+    public String getTusuario_segundoapellido_conductor() {
+        return tusuario_segundoapellido_conductor;
+    }
+
+    public void setTusuario_segundoapellido_conductor(String tusuario_segundoapellido_conductor) {
+        this.tusuario_segundoapellido_conductor = tusuario_segundoapellido_conductor;
     }
 
     public String getNombre() {

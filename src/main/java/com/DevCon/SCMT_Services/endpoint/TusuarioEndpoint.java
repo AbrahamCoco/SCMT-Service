@@ -40,14 +40,14 @@ public class TusuarioEndpoint {
     }
 
     @PostMapping("/consultarU")
-    public ResponseEntity<ResponseBody<List<TusuarioDTO>>> consultarU(@RequestParam String usuario, @RequestParam String contraseña) {
+    public ResponseEntity<ResponseBody<List<TusuarioDTO>>> consultarU(@RequestBody TusuarioDTO tusuarioDTO) {
         ResponseEntity<ResponseBody<List<TusuarioDTO>>> res = null;
         LOG.info("Consultar Usuario()->usuario: Usuario enviado correctamente");
         LOG.info("Consultar Usuario()->contraseña: Contraseña enviada correctamente");
         try {
-            List<TusuarioDTO> tusuarioDTOList = tusuarioService.consultarC(usuario, contraseña);
+            List<TusuarioDTO> tusuarioDTOList = tusuarioService.consultarC(tusuarioDTO);
             res = Utils.response200OK("Usuario logeado correctamente", tusuarioDTOList);
-        } catch (Exception e){
+        } catch (Exception e) {
             res = Utils.handle(e, "Error al logear el usuario");
         }
         LOG.info("Consultar Usuario()->Response: {} ", res);
@@ -55,7 +55,8 @@ public class TusuarioEndpoint {
     }
 
     @GetMapping("/consultarConductores")
-    public ResponseEntity<ResponseBody<List<TusuarioDTO>>> consultarConductores(@RequestParam("compania") int compania) {
+    public ResponseEntity<ResponseBody<List<TusuarioDTO>>> consultarConductores(
+            @RequestParam("compania") int compania) {
         ResponseEntity<ResponseBody<List<TusuarioDTO>>> res = null;
         LOG.info("Consultar Conductores()->compania: {} ", compania);
         try {

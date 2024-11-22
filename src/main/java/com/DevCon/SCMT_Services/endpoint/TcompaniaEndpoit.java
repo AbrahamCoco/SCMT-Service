@@ -2,7 +2,6 @@ package com.DevCon.SCMT_Services.endpoint;
 
 import com.DevCon.SCMT_Services.repository.TcompaniaRepository;
 import com.DevCon.SCMT_Services.service.TcompaniaService;
-import com.DevCon.SCMT_Services.service.TincidenteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

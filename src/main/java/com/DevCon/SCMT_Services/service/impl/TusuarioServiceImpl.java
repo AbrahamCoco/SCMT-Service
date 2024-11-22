@@ -31,10 +31,11 @@ public class TusuarioServiceImpl implements TusuarioService {
     }
 
     @Override
-    public List<TusuarioDTO> consultarC(String usuario, String contraseña) throws AppException {
+    public List<TusuarioDTO> consultarC(TusuarioDTO tusuarioDTO) throws AppException {
         List<TusuarioDTO> tusuarioDTOList = null;
         try {
-            List<TusuarioVO> tusuarioVOList = tusuarioRepository.consultarC(usuario, contraseña);
+            List<TusuarioVO> tusuarioVOList = tusuarioRepository.consultarC(tusuarioDTO.getUsuario(),
+                    tusuarioDTO.getContraseña());
             if (tusuarioVOList == null || tusuarioVOList.isEmpty()) {
                 throw new AppException("Usuario o contraseña incorrecto");
             } else {
@@ -42,7 +43,7 @@ public class TusuarioServiceImpl implements TusuarioService {
                         .map(TusuarioBuilder::fromVO)
                         .collect(Collectors.toList());
             }
-        }catch (Exception e) {
+        } catch (Exception e) {
             Utils.raise(e, "Error al iniciar sesion");
         }
         return tusuarioDTOList;
